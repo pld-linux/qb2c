@@ -5,8 +5,6 @@ Version:	3.40
 Release:	1
 License:	freely distributable
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://darkstar.irb.hr/pub/qb2c/%{name}.tgz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
