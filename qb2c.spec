@@ -44,13 +44,13 @@ ar -cr libqbX11.a x11int.o rotated.o gifencode.o gifdecode.o pickpalette.o
 rm -f *.o
 %{__cc} %{rpmcflags} -fPIC -c -w x11int.c rotated.c gifencode.c gifdecode.c pickpalette.c
 %{__cc} %{rpmldflags} -shared -Wl,-soname,libqbX11.so.3 -o libqbX11.so.%{version} *.o \
-	-L/usr/X11R6/lib -lX11 -lm
+	-L/usr/X11R6/%{_lib} -lX11 -lm
 
 cat <<EOF >bcc
 #!/bin/sh
 qb2c -b -C \$1 \$2 \$3 \$4 \$5 \$6
 if test \$? = 0 ; then
-	gcc -o \$1 \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/lib -lX11 -lm
+	gcc -o \$1 \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
 fi
 EOF
 
@@ -60,7 +60,7 @@ TEMPNAM=`mktemp /tmp/qb.XXXXXX`
 rm -f \$TEMPNAM
 qb2c -b -C \$1 \$2 \$3 \$4 \$5
 if test \$? = 0 ; then
-	gcc -o \$TEMPNAM \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/lib -lX11 -lm
+	gcc -o \$TEMPNAM \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
 	if test \$? = 0 ; then
 		\$TEMPNAM \$2 \$3 \$4 \$5
 	fi
