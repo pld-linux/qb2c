@@ -2,7 +2,7 @@ Summary:	Qbasic to C conversion
 Summary(pl):	Konwerter z Qbasic na C
 Name:		qb2c
 Version:	3.41
-Release:	2
+Release:	3
 License:	freely distributable
 Group:		Development/Languages
 Source0:	http://matrix.irb.hr/~mario/ftp/pub/qb2c/%{name}.tgz
