@@ -6,6 +6,7 @@ Release:	1
 License:	freely distributable
 Group:		Development/Languages
 Source0:	http://matrix.irb.hr/~mario/ftp/pub/qb2c/%{name}.tgz
+# Source0-md5:	1d877ac5e1f4a406e6cbb5db8cf10640
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
