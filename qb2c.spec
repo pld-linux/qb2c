@@ -1,11 +1,11 @@
 Summary:	Qbasic to C conversion
 Summary(pl):	Konwerter z Qbasic na C
 Name:		qb2c
-Version:	3.40
+Version:	3.41
 Release:	1
 License:	freely distributable
 Group:		Development/Languages
-Source0:	ftp://darkstar.irb.hr/pub/qb2c/%{name}.tgz
+Source0:	http://matrix.irb.hr/~mario/ftp/pub/qb2c/%{name}.tgz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,11 +60,9 @@ install -d $RPM_BUILD_ROOT{%{_bindir},/usr/X11R6/lib}
 install bcpp qb2c calib brun bcc $RPM_BUILD_ROOT%{_bindir}
 install libqbX11.* $RPM_BUILD_ROOT/usr/X11R6/lib
 
-gzip -9nf IAFA-PACKAGE README manual.txt
-
 %files
 %defattr(644,root,root,755)
-%doc *gz
+%doc IAFA-PACKAGE README manual.txt
 %attr(755,root,root) %{_bindir}/*
 /usr/X11R6/lib/libqbX11.*
 
