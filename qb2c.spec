@@ -3,10 +3,11 @@ Summary(pl):	Konwerter z Qbasic na C
 Name:		qb2c
 Version:	3.40
 Release:	1
+License:	freely distributable
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://darkstar.irb.hr/pub/qb2c/%{name}.tgz
-Copyright:	freely distributable
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -15,19 +16,20 @@ compilable C code. A 'brun' script is also provided to directly
 execute a qbasic program.
 
 %description -l pl
-Ten pakiet próbuje dokonaæ konwersji programów pisanych w Microsoft 
-QBASIC w kod kompatybilny z C. 
+Ten pakiet próbuje dokonaæ konwersji programów pisanych w Microsoft
+QBASIC w kod kompatybilny z C. Do³±czony jest te¿ skrypt brun do
+bezpo¶redniego uruchamiania programów w qbasicu.
 
 %prep
 %setup -q -n %{name} -c
 
 %build
-gcc %{rpmcflags} -o bcpp bcpp.c
-gcc %{rpmcflags} -o qb2c qb2c.c -lm
-gcc %{rpmcflags} -o calib calib.c -lm
-gcc %{rpmcflags} -c -w x11int.c rotated.c gifencode.c gifdecode.c pickpalette.c
+%{__cc} %{rpmcflags} -o bcpp bcpp.c
+%{__cc} %{rpmcflags} -o qb2c qb2c.c -lm
+%{__cc} %{rpmcflags} -o calib calib.c -lm
+%{__cc} %{rpmcflags} -c -w x11int.c rotated.c gifencode.c gifdecode.c pickpalette.c
 ar -cr libqbX11.a x11int.o rotated.o gifencode.o gifdecode.o pickpalette.o
-gcc -shared -Wl,-soname,libqbX11.so.3 -o libqbX11.so.%{version} *.o
+%{__cc} %{rpmldflags} -shared -Wl,-soname,libqbX11.so.3 -o libqbX11.so.%{version} *.o
 
 cat <<EOF >bcc
 #!/bin/sh
@@ -56,8 +58,10 @@ EOF
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},/usr/X11R6/lib}
+
 install bcpp qb2c calib brun bcc $RPM_BUILD_ROOT%{_bindir}
 install libqbX11.* $RPM_BUILD_ROOT/usr/X11R6/lib
+
 gzip -9nf IAFA-PACKAGE README manual.txt
 
 %files
