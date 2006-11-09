@@ -1,0 +1,1 @@
+- s/Copyright/License/, use %__cc instead of directly gcc
