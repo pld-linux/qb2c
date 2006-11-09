@@ -24,7 +24,7 @@ bezpo¶redniego uruchamiania programów w qbasicu.
 Summary:	Static qbX11 library
 Summary(pl):	Statyczna biblioteka qbX11
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description static
 Static qbX11 library.
