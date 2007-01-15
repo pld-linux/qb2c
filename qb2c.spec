@@ -1,8 +1,10 @@
+# TODO
+# - /usr/bin/bcc collides with bcc.spec
 Summary:	Qbasic to C conversion
 Summary(pl):	Konwerter z Qbasic na C
 Name:		qb2c
 Version:	3.41
-Release:	3
+Release:	4
 License:	freely distributable
 Group:		Development/Languages
 Source0:	http://matrix.irb.hr/~mario/ftp/pub/qb2c/%{name}.tgz
@@ -11,7 +13,7 @@ BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This package attempts to conver Microsoft QBASIC programs into
+This package attempts to convert Microsoft QBASIC programs into
 compilable C code. A 'brun' script is also provided to directly
 execute a qbasic program.
 
@@ -46,23 +48,23 @@ rm -f *.o
 %{__cc} %{rpmldflags} -shared -Wl,-soname,libqbX11.so.3 -o libqbX11.so.%{version} *.o \
 	-L/usr/X11R6/%{_lib} -lX11 -lm
 
-cat <<EOF >bcc
+cat <<'EOF' > bcc
 #!/bin/sh
-qb2c -b -C \$1 \$2 \$3 \$4 \$5 \$6
-if test \$? = 0 ; then
-	gcc -o \$1 \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
+qb2c -b -C $1 $2 $3 $4 $5 $6
+if test $? = 0 ; then
+	gcc -o $1 $1.c -L$(pwd) -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
 fi
 EOF
 
-cat <<EOF >brun
+cat <<'EOF' > brun
 #!/bin/sh
 TEMPNAM=`mktemp /tmp/qb.XXXXXX`
-rm -f \$TEMPNAM
-qb2c -b -C \$1 \$2 \$3 \$4 \$5
-if test \$? = 0 ; then
-	gcc -o \$TEMPNAM \$1.c -L`pwd` -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
-	if test \$? = 0 ; then
-		\$TEMPNAM \$2 \$3 \$4 \$5
+rm -f $TEMPNAM
+qb2c -b -C $1 $2 $3 $4 $5
+if test $? = 0 ; then
+	gcc -o $TEMPNAM $1.c -L$(pwd) -lqbX11 -L/usr/X11R6/%{_lib} -lX11 -lm
+	if test $? = 0 ; then
+		$TEMPNAM $2 $3 $4 $5
 	fi
 fi
 EOF
