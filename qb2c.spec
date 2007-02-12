@@ -1,7 +1,7 @@
 # TODO
 # - /usr/bin/bcc collides with bcc.spec
 Summary:	Qbasic to C conversion
-Summary(pl):	Konwerter z Qbasic na C
+Summary(pl.UTF-8):   Konwerter z Qbasic na C
 Name:		qb2c
 Version:	3.41
 Release:	4
@@ -17,21 +17,21 @@ This package attempts to convert Microsoft QBASIC programs into
 compilable C code. A 'brun' script is also provided to directly
 execute a qbasic program.
 
-%description -l pl
-Ten pakiet próbuje dokonaæ konwersji programów pisanych w Microsoft
-QBASIC w kod kompatybilny z C. Do³±czony jest te¿ skrypt brun do
-bezpo¶redniego uruchamiania programów w qbasicu.
+%description -l pl.UTF-8
+Ten pakiet prÃ³buje dokonaÄ‡ konwersji programÃ³w pisanych w Microsoft
+QBASIC w kod kompatybilny z C. DoÅ‚Ä…czony jest teÅ¼ skrypt brun do
+bezpoÅ›redniego uruchamiania programÃ³w w qbasicu.
 
 %package static
 Summary:	Static qbX11 library
-Summary(pl):	Statyczna biblioteka qbX11
+Summary(pl.UTF-8):   Statyczna biblioteka qbX11
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
 Static qbX11 library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka qbX11.
 
 %prep
