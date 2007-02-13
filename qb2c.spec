@@ -1,7 +1,7 @@
 # TODO
 # - /usr/bin/bcc collides with bcc.spec
 Summary:	Qbasic to C conversion
-Summary(pl.UTF-8):   Konwerter z Qbasic na C
+Summary(pl.UTF-8):	Konwerter z Qbasic na C
 Name:		qb2c
 Version:	3.41
 Release:	4
@@ -24,7 +24,7 @@ bezpośredniego uruchamiania programów w qbasicu.
 
 %package static
 Summary:	Static qbX11 library
-Summary(pl.UTF-8):   Statyczna biblioteka qbX11
+Summary(pl.UTF-8):	Statyczna biblioteka qbX11
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
